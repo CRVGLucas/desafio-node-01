@@ -75,7 +75,7 @@ app.put('/todos/:id', checksExistsUserAccount, (request, response) => {
       }
     )
   } else {
-    return response.status(400).send('Todo not found')
+    return response.status(400).json({ error: 'Todo not found'})
   }
 
 });
@@ -96,7 +96,7 @@ app.patch('/todos/:id/done', checksExistsUserAccount, (request, response) => {
       }
     )
   } else {
-    return response.status(400).send('Todo not found')
+    return response.status(400).json({ error: 'Todo not found'})
   }
 });
 
@@ -108,7 +108,7 @@ app.delete('/todos/:id', checksExistsUserAccount, (request, response) => {
   if(todo) {
     user.todos.splice(todo, 1)
   } else {
-    return response.status(400).send('Todo not found')
+    return response.status(400).json({ error: 'Todo not found'})
   }
 });
 
